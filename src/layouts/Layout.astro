@@ -1,5 +1,6 @@
 ---
 import GitHub from "../components/icons/GitHub.astro";
+import Analytics from "../components/Analytics.astro";
 
 export interface Props {
   title: string;
@@ -16,6 +17,8 @@ const { title, description, image } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <Analytics />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <link rel="canonical" href={Astro.url} />

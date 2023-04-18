@@ -94,31 +94,8 @@ const config = {
 例えば bulletproof-react のコードからオブジェクトを抽出するとこのようなイメージになります。
 このようなイメージになります。featuresとして切り出す単位がオブジェクトとして、オブジェクトでできることをメソッドとして表現しています。また一覧表示などはオブジェクトではなくユーザインタラクションのためのビューなのでクラスのプロパティとしては記載していません。
 
-```mermaid
-classDiagram
-	direction LR
-	discussion --> comment
-	user --> discussion
-	user --> comment
-	class comment
-		comment: description
-		comment: create()
-		comment: update()
-		comment: delete()
-	class discussion
-		discussion: title
-		discussion: body
-		discussion: create()
-		discussion: update()
-		discussion: delete()
-	class user
-		user: name
-		user: emmail
-		user: bio
-		user: update_profile()
-		user: delete_user()
+![diagrame](/assets/articles/react-architecture/diagram.webp)
 
-```
 bulletproof-reactのアーキテクチャでもfeatureは特定機能にまつわるモジュールであり、その中のcomponentsは**特定機能を実装するためのコンポーネント**と表現されています。つまりモデリングの結果を反映させやすいため相性が良いかと思います。話が少しそれますが、featuresのcomponentsに配置するコンポーネント粒度についてもある程度の指針が生まれます。どんな機能と実装するべきビューが配置するコンポーネントの大まかな数であり粒度になります。つまりこの考え方を取り入れることでコンポーネントの配置先の問題と粒度設計の問題が大まかに片付くのです。
 
 またモデリングをすることでアプリケーションの設計や考慮漏れがないかの確認、機能間の関係性を把握できる上にそれをアーキテクチャとしても表現できるので割と有用な考え方だと思います。またOOUIを含めて考えるとデザイナーとの共通認識も産みやすいという部分もメリットになります。

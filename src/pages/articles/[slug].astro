@@ -1,0 +1,127 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const articleEntries = await getCollection("article");
+
+  return articleEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props as {
+  entry: CollectionEntry<"article">;
+};
+const { Content } = await entry.render();
+
+const date = Intl.DateTimeFormat("ja-JP", { dateStyle: "short" }).format(
+  entry.data.date
+);
+---
+
+<Layout title={entry.data.title}>
+  <main class="mt-20 px-6 lg:px-10">
+    <div class="relative max-w-5xl mx-auto">
+      <img
+        src={entry.data.image}
+        alt=""
+        fetchpriority="high"
+        class="w-full h-auto aspect-video object-cover"
+      />
+      <div
+        class="mt-4 text-stone-100 bg-stone-800/70 backdrop-blur-sm md:absolute md:top-1/4 md:right-0 md:py-4 md:px-6 md:m-0 md:w-10/12"
+      >
+        <h1 class="text-2xl/relaxed font-bold md:w-3/4 md:text-3xl/relaxed">
+          {entry.data.title}
+        </h1>
+        <p class="text-base mt-4 text-right md:text-xl">
+          <span>by 37108</span>
+          <span class="ml-4">at {date}</span>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <section class="mt-20 px-6 lg:px-10">
+    <article class="max-w-3xl mx-auto space-y-6 text-base/7 text-stone-100 article">
+      <Content />
+    </article>
+  </section>
+  <div class="mt-20" />
+</Layout>
+
+<style lang="scss" is:global>
+  .article {
+    h2 {
+      @apply pb-2 text-2xl font-bold border-b;
+    }
+    h3 {
+      @apply pb-2 text-xl font-bold border-b;
+    }
+    h4 {
+      @apply pb-2 text-xl border-b;
+    }
+
+    img {
+      @apply w-full h-auto aspect-video object-contain mx-auto;
+    }
+    iframe {
+      @apply w-full h-auto aspect-video mx-auto;
+    }
+
+    a {
+      @apply text-indigo-300 hover:underline;
+    }
+    strong {
+      @apply font-bold;
+    }
+    code {
+      @apply py-px px-1 bg-stone-700 rounded-sm;
+    }
+    blockquote {
+      @apply pl-4 py-px border-l-2 border-stone-100;
+    }
+    hr {
+      @apply border-stone-100;
+    }
+
+    table {
+      @apply  w-full border-collapse table-auto;
+      thead {
+        tr {
+          th {
+            @apply pb-2 border-b border-stone-400 font-normal;
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            @apply py-2 text-center font-normal;
+          }
+        }
+      }
+
+    }
+    pre {
+      @apply p-6;
+      code {
+        @apply p-0 font-jetbrains bg-transparent rounded-none;
+      };
+    }
+    ul {
+      li {
+        @apply ml-5 list-disc text-base/loose;
+      }
+    }
+    ol {
+      li {
+        @apply ml-5 list-decimal text-base/loose;
+
+      }
+    }
+  }
+</style>

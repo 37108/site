@@ -1,48 +1,51 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
 ---
 
 <Layout title="37108's blog">
-	<main class="mt-20">
-		<section class="px-6 lg:px-10">
-			<div class="relative w-fu1l h-100 max-w-5xl mx-auto">
-				<img
-					src="/assets/enso.webp"
-					width="800"
-					height="800"
-					alt=""
-					class="absolute w-full max-w-[400px] h-auto aspect-square"
-				/>
-				<div class="relative flex items-center justify-center sm:w-1/2 h-full">
-					<h1 class="text-5xl/normal text-stone-100 text-right font-bold font-rale-way">
-						Out from my Head and Experiences
-					</h1>
-				</div>
-			</div>
-		</section>
-		<section class="mt-20 px-6 lg:px-10">
-			<div class="max-w-5xl mx-auto">
-				<h2 class="text-4xl/normal text-stone-100 font-bold">Articles</h2>
-				<div class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-8 mt-6">
-					<Card
-						title="What We’re Reading: Aren’t humans amazing sometimes?"
-						image="https://picsum.photos/480"
-						href="/path/to/greeting"
-					/>
-					<Card
-						title="Resisting Deterministic Thinking"
-						image="https://picsum.photos/480"
-						href="/path/to/greeting"
-					/>
-					<Card
-						title="I’m an ER doctor: Here’s what I found when I asked ChatGPT to diagnose my patients"
-						image="https://picsum.photos/480"
-						href="/path/to/greeting"
-					/>
-				</div>
-			</div>
-		</section>
-
-	</main>
+  <main class="mt-20">
+    <section class="px-6 lg:px-10">
+      <div class="relative w-fu1l h-100 max-w-5xl mx-auto">
+        <img
+          src="/assets/enso.webp"
+          width="800"
+          height="800"
+          alt=""
+          class="absolute w-full max-w-[400px] h-auto aspect-square"
+        />
+        <div class="relative flex items-center justify-center sm:w-1/2 h-full">
+          <h1
+            class="text-5xl/normal text-stone-100 text-right font-bold font-rale-way"
+          >
+            Out from my Head and Experiences
+          </h1>
+        </div>
+      </div>
+    </section>
+    <section class="mt-20 px-6 lg:px-10">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-4xl/normal text-stone-100 font-bold">Articles</h2>
+        <div
+          class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-8 mt-6"
+        >
+          <Card
+            title="What We’re Reading: Aren’t humans amazing sometimes?"
+            image="https://picsum.photos/480"
+            href="/path/to/greeting"
+          />
+          <Card
+            title="Resisting Deterministic Thinking"
+            image="https://picsum.photos/480"
+            href="/path/to/greeting"
+          />
+          <Card
+            title="I’m an ER doctor: Here’s what I found when I asked ChatGPT to diagnose my patients"
+            image="https://picsum.photos/480"
+            href="/path/to/greeting"
+          />
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>

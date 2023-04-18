@@ -16,7 +16,6 @@ const { entry } = Astro.props as {
   entry: CollectionEntry<"article">;
 };
 const { Content, headings } = await entry.render();
-const res = await entry.render()
 
 const date = Intl.DateTimeFormat("ja-JP", { dateStyle: "short" }).format(
   entry.data.date
@@ -50,28 +49,44 @@ const date = Intl.DateTimeFormat("ja-JP", { dateStyle: "short" }).format(
     <nav class="mx-auto max-w-4xl">
       <h2 class="text-2xl text-stone-100">Table of contents</h2>
       <ul class="mt-6 text-stone-300">
-        {headings.map((item) => (
-          <li class="list-disc text-base/loose hover:underline" style={{marginLeft: `${1.25*item.depth}rem`}}>
-            <a href={`#${item.slug}`}>{item.text}</a>
-          </li>
-          ))}
+        {
+          headings.map((item) => (
+            <li
+              class="list-disc text-base/loose hover:underline"
+              style={{ marginLeft: `${1.25 * item.depth}rem` }}
+            >
+              <a href={`#${item.slug}`}>{item.text}</a>
+            </li>
+          ))
+        }
       </ul>
     </nav>
 
-    <article class="mx-auto mt-10 max-w-4xl space-y-6 text-base/7 text-stone-100 article">
+    <article
+      class="mx-auto mt-10 max-w-4xl space-y-6 text-base/7 text-stone-100 article"
+    >
       <Content />
     </article>
     <div class="mt-20 mx-auto pt-5 max-w-4xl">
       <a href="/" class="flex items-center text-stone-100 hover:underline">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"></path>
         </svg>
         <span class="ml-2 text-base">return to articles</span>
-
       </a>
     </div>
   </section>
-  <div class="mt-20" />
+  <div class="mt-20"></div>
 </Layout>
 
 <style lang="scss" is:global>
@@ -110,7 +125,7 @@ const date = Intl.DateTimeFormat("ja-JP", { dateStyle: "short" }).format(
     }
 
     table {
-      @apply  w-full border-collapse table-auto;
+      @apply w-full border-collapse table-auto;
       thead {
         tr {
           th {
@@ -125,13 +140,12 @@ const date = Intl.DateTimeFormat("ja-JP", { dateStyle: "short" }).format(
           }
         }
       }
-
     }
     pre {
       @apply p-6;
       code {
         @apply p-0 font-jetbrains bg-transparent rounded-none;
-      };
+      }
     }
     ul {
       li {
@@ -141,7 +155,6 @@ const date = Intl.DateTimeFormat("ja-JP", { dateStyle: "short" }).format(
     ol {
       li {
         @apply ml-5 list-decimal text-base/loose;
-
       }
     }
   }

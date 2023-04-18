@@ -1,6 +1,9 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+
+const posts = await getCollection("article");
 ---
 
 <Layout title="37108's blog">
@@ -12,6 +15,7 @@ import Card from "../components/Card.astro";
           width="800"
           height="800"
           alt=""
+          fetchpriority="high"
           class="absolute w-full max-w-[400px] h-auto aspect-square"
         />
         <div class="relative flex items-center justify-center sm:w-1/2 h-full">
@@ -29,21 +33,16 @@ import Card from "../components/Card.astro";
         <div
           class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-8 mt-6"
         >
-          <Card
-            title="What We’re Reading: Aren’t humans amazing sometimes?"
-            image="https://picsum.photos/480"
-            href="/path/to/greeting"
-          />
-          <Card
-            title="Resisting Deterministic Thinking"
-            image="https://picsum.photos/480"
-            href="/path/to/greeting"
-          />
-          <Card
-            title="I’m an ER doctor: Here’s what I found when I asked ChatGPT to diagnose my patients"
-            image="https://picsum.photos/480"
-            href="/path/to/greeting"
-          />
+          {
+            posts.map(({ data, slug }) => (
+              <Card
+                title={data.title}
+                image={data.image}
+                date={data.date}
+                href={`/articles/${slug}`}
+              />
+            ))
+          }
         </div>
       </div>
     </section>

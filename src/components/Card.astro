@@ -1,11 +1,16 @@
 ---
 export interface Props {
   title: string;
+  date: Date;
   image: string;
   href: string;
 }
 
-const { href, title, image } = Astro.props;
+const { href, title, image, date } = Astro.props;
+
+const formattedDate = Intl.DateTimeFormat("ja-JP", {
+  dateStyle: "short",
+}).format(date);
 ---
 
 <a href={href} class="hover:opacity-80">
@@ -15,6 +20,7 @@ const { href, title, image } = Astro.props;
     class="w-full h-auto aspect-video object-cover card-image"
   />
   <p class="mt-2 text-stone-100 text-xl line-clamp-2">{title}</p>
+  <p class="mt-2 text-stone-100 text-base text-right">{formattedDate}</p>
 </a>
 
 <style>

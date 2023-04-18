@@ -1,10 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	theme: {
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  theme: {
     fontFamily: {
-      'rale-way': ['Raleway', 'sans-serif'],
-      'noto-sans': ['Noto Sans JP', 'sans-serif']
+      "rale-way": ["Raleway", "sans-serif"],
+      "noto-sans": ["Noto Sans JP", "sans-serif"],
+      "jetbrains": ['JetBrains Mono', 'monospace']
     },
     extend: {
       spacing: [...Array(100 - 3)]
@@ -12,9 +13,10 @@ module.exports = {
         .reduce(
           (acc, cur) => ({
             ...acc,
-            [cur]: String(cur * 0.25) + 'rem',
+            [cur]: String(cur * 0.25) + "rem",
           }),
-          {},
-        )},
-	},
-}
+          {}
+        ),
+    },
+  },
+};

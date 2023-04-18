@@ -1,26 +1,24 @@
 ---
 export interface Props {
-	title: string;
-	image: string;
-	href: string;
+  title: string;
+  image: string;
+  href: string;
 }
 
 const { href, title, image } = Astro.props;
 ---
-<a
-	href={href}
-	class="hover:opacity-80"
->
-	<img
-		src={image}
-		alt=""
-		class="w-full h-auto aspect-video object-cover card-image"
-		/>
-	<p class="mt-2 text-stone-100 text-xl line-clamp-2">{title}</p>
+
+<a href={href} class="hover:opacity-80">
+  <img
+    src={image}
+    alt=""
+    class="w-full h-auto aspect-video object-cover card-image"
+  />
+  <p class="mt-2 text-stone-100 text-xl line-clamp-2">{title}</p>
 </a>
 
 <style>
-	.card-image {
-		clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%, 0 20%);
-	}
+  .card-image {
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%, 0 20%);
+  }
 </style>

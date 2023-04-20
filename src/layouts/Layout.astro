@@ -44,16 +44,15 @@ const { title, description, image } = Astro.props;
       </div>
     </header>
     <slot />
+    <style is:global>
+      @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Raleway:wght@700&display=swap");
+
+      html {
+        font-family: "Noto Sans JP", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-feature-settings: "palt" 1;
+      }
+    </style>
   </body>
 </html>
-
-<style is:global>
-  @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Raleway:wght@700&display=swap");
-
-  html {
-    font-family: "Noto Sans JP", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: "palt" 1;
-  }
-</style>

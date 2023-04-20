@@ -12,8 +12,6 @@ export async function getStaticPaths() {
   }));
 }
 
-console.log(Astro.url);
-
 const { entry } = Astro.props as {
   entry: CollectionEntry<"article">;
 };
@@ -102,13 +100,17 @@ const image = entry.data.image.startsWith("http")
 <style lang="scss" is:global>
   .article {
     h2 {
-      @apply pb-2 text-2xl font-bold border-b;
+      @apply pb-2 text-2xl font-bold border-b border-stone-400;
     }
     h3 {
-      @apply pb-2 text-xl font-bold border-b;
+      @apply pb-2 text-xl font-bold border-b border-stone-600;
     }
     h4 {
       @apply pb-2 text-xl border-b;
+    }
+
+    p {
+      @apply whitespace-pre-wrap;
     }
 
     img {
@@ -152,7 +154,7 @@ const image = entry.data.image.startsWith("http")
       }
     }
     pre {
-      @apply p-6;
+      @apply p-6 rounded-md;
       code {
         @apply p-0 font-jetbrains bg-transparent rounded-none;
       }
@@ -161,10 +163,22 @@ const image = entry.data.image.startsWith("http")
       li {
         @apply ml-5 list-disc text-base/loose;
       }
+
+      ol {
+        li {
+          @apply ml-5 list-decimal text-base/loose;
+        }
+      }
     }
     ol {
       li {
         @apply ml-5 list-decimal text-base/loose;
+      }
+
+      ul {
+        li {
+          @apply ml-5 list-disc text-base/loose;
+        }
       }
     }
   }

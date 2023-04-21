@@ -1,0 +1,130 @@
+---
+title: 横スクロールバーのデザインを調整する
+description: サイトのデザインで横スクロールが必要になり、かつ常にスクロールバーを表示したいみたいな要件に対応するためにどのような調整が必要になるかを取りまとめました。
+date: 2023-04-21
+image: /assets/articles/browser-scrollbar/cover.webp
+tags: ["frontend"]
+---
+
+サイトのデザインで横スクロールが必要になり、かつ常にスクロールバーを表示したいみたいな要件に対応するためにどのような調整が必要になるかを取りまとめました。
+
+## CSS によるスタイリング
+
+主要なブラウザでいくと Firefox かそれ以外でスクロールバーへのスタイルリングが異なります。Firefox は `scrollbar-width` と `scrollbar-color` というプロパティを利用してスタイリングをしていきます。
+
+サポート状況をみても Firefox 以外は全くサポートされていません。
+
+> [Can I Use scrollbar-width](https://caniuse.com/?search=scrollbar-width)
+
+Chrome や Edge、Safari では `::-webkit-scrollbar` などという擬似要素を用いてスタイリングを行います。ベンダープレフィクスもついてる通り標準ではないものの多くのブラウザでサポートされています。
+
+> [Can I Use webkit-scrollbar](https://caniuse.com/?search=webkit-scrollbar)
+
+ただし擬似要素は 1 個だけでなく、 `::-webkit-scrollbar-thumb` などといったものもあり、これらも利用してスタイルを当てる必要があります。
+一部の擬似要素は Safari on iOS ではサポートされてないなど細かい差異でデザインが異なることもあり得るのは念頭においてください。
+
+これを踏まえてスタイリングをどのようにするかを書いていきます。
+
+### スクロールバーのデザイン箇所
+
+主要な部分は 3 箇所から構成されています。
+
+![scrollbar desiggn](/assets/articles/browser-scrollbar/scrollbar-design.webp)
+
+- scrollbar: スクロールバー全体
+- scrollbar thumb: スクロールバーのつまみ部分
+- acrollbar track: スクロールバーの背景部分
+
+`::-webkit-scrollbar` でも `scrollbar-width` と `scrollbar-color` でも基本的な設定箇所はこれらになります。
+
+### Firefox でのスタイリング
+
+`scrollbar-width` でスクロールバーの幅を、`scrollbar-color` の 1 つ目で thumb を、2 つ目で track を指定します。
+下記のようにクラスにスタイルを定義したのであれば `scrollbar` というクラス名を持つ要素のスクロールバーに対してスタイルが定義されます。
+
+```css
+.scrollbar {
+  scrollbar-width: 6px;
+  scrollbar-color: #00060 transparent;
+}
+```
+
+擬似クラスで、 `scrollbar:hover` のようにしてスタイルを定義することはできるのですが、その時の挙動が下記のようになります。
+
+1. 要素のマウスを乗せた際は何も起こらない
+2. 要素からマウスを外してまた要素にマウスを乗せると hover 時のスタイルが適用される
+3. 以降はホバー時のスタイルが適用される
+
+割と挙動の制御が難しいのでシンプルに止めることをお勧めします...。
+
+### Chrome などでのスタイリング
+
+Chrome などのブラウザでは `::-webkit-scrollbar` を中心に擬似要素に対してスタイルを加えていきます。
+track や thumb が擬似要素であるためできるスタイルの幅が広いこと、記述してはいませんが `::-webkit-scrollbar-button` などの疑似要素もあるためかなり柔軟にスタイリングをすることができます。
+
+```css
+.scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+.scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 16px;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  margin-left: 24px;
+  background-color: #00060;
+  border-radius: 16px;
+}
+```
+
+## 入力デバイスによる違い
+
+実はスクロールバーの表示についてはブラウザ以上に入力デバイスで変わってきます。もしかしたら OS による差もあるかもしれませんが、Windows でトラックパッドを使うケースが稀なため確認できていません…。
+
+MacOS の場合はスクロールバーの表示を設定で切り替えられるのですが、トラックパッドを利用している私には横スクロールバーは表示されません。スワイプをし始めたタイミングでスクロールバーが表示されます。それにたいしてマウスを利用している人は常にスクロールバーが表示さてていました。
+
+設定があるので変更することで挙動を変えることはできますが、デザインのために OS の設定まで変更は厳しいです…。
+
+![macOS config](/assets/articles/browser-scrollbar/macos-config.webp)
+
+また Windows の場合はブラウザ問わずにいつでもスクロールバーが表示されるようになっていました。マウス以外の入力端末を試せませんが、標準で表示されると考えておくのが正しいかと思います。
+
+![macOS config](/assets/articles/browser-scrollbar/windows-scroll-01.webp)
+
+`chrome://flags` からできる設定項目に Overlay Scrollbars がありこれを有効にするとスクロールバーがデフォルトで非表示になります。
+
+![macOS config](/assets/articles/browser-scrollbar/windows-chrome-config.webp)
+
+そしてマウスをスクローラブルな要素に乗せた時にスクロールバーが出てくるようになります。MacOS 版だとない Windows のみの設定はあります。
+
+![macOS config](/assets/articles/browser-scrollbar/windows-scroll-02.webp)
+
+つまり入力デバイスや OS によって同じブラウザであってもスクロールバーを表示するしないの制御がされていたりします。
+
+## さいごに
+
+まとめるとこんな感じでしょう。Firefox でのデザインが困難ではあるものの色調調整とかのレベル感であれば対応がしやすいという温度感ですね。
+
+- Windows: デフォルトでスクロールバーを表示
+  - マウスユーザーが操作できるように配慮
+  - デザインはあまりいけてない
+- MacOS: トラックパッドはデフォルトで非表示
+  - 横スクロールがバーなしで可能のため
+  - デザインは綺麗だと思う…
+  - OS の設定によって表示するかが異なる
+- Chrome / Edge / Safari
+  - `::-webkit-scrollbar` で比較的柔軟にデザイン
+- Firefox
+  - `scrollbar-width` と `scrollbar-color` のみ
+  - hover 擬似クラスとかがうまく当たらない
+  - ブラウザのスクロールバーとバッティングする
+
+ブラウザ(Firefox かそれ以外)での差異も大きいのですが、それに加えて入力端末、OS によって挙動が異なるのがスクロールバーになってきます。色や大きさなど標準で提供されてる部分くらいならまだしも、あまり細かい挙動の調整を望むのは難しいと思います。
+
+無理に統一しようとせずにデフォルトのままにするのも 1 つの手だと思います。それか非表示で統一してしまうか…。そもそも横スクロールを採用しないっていうのも検討するべきかと思っています。やり方を載せつつあまりお勧めしないという結果になりました。
+
+## 参考
+
+- [::-webkit-scrollbar](https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar)
+- [scrollbar-width](https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width)
+- [scrollbar-color](https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-color)

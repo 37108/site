@@ -17,6 +17,8 @@ const formattedDate = Intl.DateTimeFormat("ja-JP", {
   <img
     src={image}
     alt=""
+    loading="lazy"
+    decoding="async"
     class="w-full h-auto aspect-video object-cover card-image"
   />
   <p class="mt-2 text-stone-100 text-xl line-clamp-2">{title}</p>

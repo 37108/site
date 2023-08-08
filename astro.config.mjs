@@ -7,6 +7,9 @@ import { rehypeLazy } from './src/lib/lazy-loading'
 
 // https://astro.build/config
 export default defineConfig({
+  experimental: {
+    viewTransitions: true
+  },
   site: 'https://37108.dev',
   integrations: [partytown({
     config: {

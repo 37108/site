@@ -1,0 +1,79 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const collection = await getCollection("article");
+  const tags = [
+    "all",
+    ...[...new Set(collection.flatMap((post) => post.data.tags))].sort(),
+  ];
+
+  return [
+    ...tags.map((tag) => ({
+      params: { path: tag },
+    })),
+    { params: { path: undefined } },
+  ];
+}
+
+const { path } = Astro.params;
+
+const posts = await getCollection("article");
+const tags = [
+  "all",
+  ...[...new Set(posts.flatMap((post) => post.data.tags))].sort(),
+];
+const articles = !path
+  ? posts
+  : posts.filter((post) => post.data.tags?.includes(path));
+
+const image = Astro.url.origin + "/assets/og/default.webp";
+---
+
+<Layout title="37108's blog" description="all articles" image={image}>
+  <main class="my-20">
+    <section class="px-6 lg:px-10">
+      <div
+        class="grid grid-cols-12 max-w-5xl mx-auto min-h-screen h-max text-neutral-900 dark:text-neutral-100 text-base"
+      >
+        <div class="col-span-3 border-neutral-800 border-l border-r dark:border-neutral-200">
+          <div class="mt-20">
+            <h2 class="pl-4 pb-2 border-b border-neutral-800 dark:border-neutral-200">filter by tag</h2>
+            <ul class="flex flex-col gap-1.5 mt-2 pl-4">
+              {
+                tags.map((tag) => (
+                  <li class="flex w-full hover:text-neutral-700 dark:hover:text-neutral-500">
+                    <a class="w-full" href={`/articles/tags/${tag === "all" ? "" : tag}`}>
+                      {tag}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-span-7 h-full">
+          <div class="mt-45">
+            <h1 class="pl-4 pb-2 border-b border-neutral-800 dark:border-neutral-200">Articles</h1>
+            <ul class="flex flex-col gap-1.5 mt-2 pl-4">
+              {
+                articles.map((article) => (
+                <li class="flex w-full hover:text-neutral-700 dark:hover:text-neutral-500">
+                  <a class="w-full" href={`/articles/${article.slug}`}>
+                    {article.data.title}
+                  </a>
+                </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-span-2 border-neutral-800 dark:border-neutral-200 border-l border-r h-full">
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

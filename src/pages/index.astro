@@ -3,9 +3,9 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 
-const posts = (await getCollection("article")).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
-);
+const posts = (await getCollection("article"))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 6);
 
 const image = Astro.url.origin + "/assets/og/default.webp";
 ---
@@ -52,7 +52,20 @@ const image = Astro.url.origin + "/assets/og/default.webp";
             ))
           }
         </div>
+        <a href="/articles/tags" class="group relative inline-flex mt-10">
+          <span
+            class="inline-flex px-6 py-2 border border-neutral-800 text-base text-neutral-900 bg-neutral-200 dark:border-neutral-200 dark:text-neutral-100 dark:bg-neutral-800 group-hover:translate-x-2 group-hover:translate-y-3 duration-300"
+          >
+            show more</span
+          >
+          <div
+            class="-z-10 absolute -right-2 -bottom-3 w-full h-full border border-neutral-400 dark:border-neutral-500"
+          >
+          </div>
+        </a>
       </div>
     </section>
   </main>
 </Layout>
+
+<style lang="scss"></style>

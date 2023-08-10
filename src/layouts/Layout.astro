@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import ModeButton from "../components/Mode.astro";
 import Analytics from "../components/Analytics.astro";
 
@@ -14,6 +15,7 @@ const { title, description, image } = Astro.props;
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
   <head>
+    <ViewTransitions />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -31,7 +33,9 @@ const { title, description, image } = Astro.props;
     <meta property="og:image" content={image} />
     <meta name="twitter:card" content="summary" />
   </head>
-  <body class="bg-neutral-200 dark:bg-neutral-800 min-h-screen">
+  <body
+    class="bg-neutral-200 dark:bg-neutral-800 min-h-screen transition-colors duration-300"
+  >
     <header class="px-6 mx-auto lg:px-10">
       <div class="flex items-center justify-end mx-auto max-w-5xl h-14">
         <ModeButton />
@@ -40,9 +44,8 @@ const { title, description, image } = Astro.props;
     <slot />
     <style is:global>
       @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Raleway:wght@700&display=swap");
-
       html {
-        font-family: "Noto Sans JP", sans-serif;
+        font-family: "Noto Sans JP", sans-serif !important;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         font-feature-settings: "palt" 1;

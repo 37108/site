@@ -1,118 +1,78 @@
-<button onclick="switcher()" class="group relative first-letter:mx-5">
+<button id="switcher" onclick="switcher()" class="group w-8 h-8">
   <svg
     viewBox="0 0 24 24"
     stroke="currentColor"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    class="sun-line absolute w-8 h-8 text-orange-300 group-hover:[&>path]:animate-[rise_0.5s_linear_both] dark:[&>path]:animate-[out_0.5s_linear_both]"
   >
     <path
       d="M14.9839 2.23001C13.7952 1.73452 12.5198 1.48026 11.2319 1.48201C5.84693 1.48201 1.48193 5.84701 1.48193 11.232C1.48193 12.562 1.74793 13.829 2.22993 14.984"
       stroke-linecap="round"
-      stroke-linejoin="round"></path>
-  </svg>
-  <svg
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    class="moon-line absolute w-8 h-8 text-indigo-400 group-hover:[&>path]:animate-[rise_0.5s_linear_both] [&>path]:animate-[out_0.5s_linear_both]"
-  >
+      stroke-linejoin="round"
+      class="sun-line text-orange-300 group-hover:animate-[in_0.5s_linear_both]"
+    ></path>
     <path
       d="M2.21288 14.9362C3.40162 15.4317 4.6484 15.7165 5.93628 15.7148C11.3213 15.7148 15.6863 11.3498 15.6863 5.96477C15.6863 4.63477 15.4203 3.36777 14.9383 2.21277"
       stroke-linecap="round"
-      stroke-linejoin="round"></path>
-  </svg>
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    class="moon-bottom-line absolute w-8 h-8 text-indigo-400 group-hover:[&>path]:animate-[rise_0.5s_linear_both] [&>path]:animate-[out_0.5s_linear_both]"
-  >
+      stroke-linejoin="round"
+      class="moon-line text-indigo-400 group-hover:animate-[in_0.5s_linear_both]"
+    ></path>
     <path
       d="M2.21288 14.9362C2.95399 16.7127 4.17563 18.2608 5.77754 19.3281C7.37944 20.3955 9.26136 20.9649 11.1863 20.9648C16.5713 20.9648 20.9363 16.5998 20.9363 11.2148C20.9364 9.28985 20.367 7.40793 19.2997 5.80602C18.2323 4.20412 16.7148 2.95388 14.9383 2.21277"
       stroke-linecap="round"
-      stroke-linejoin="round"></path>
-  </svg>
-
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    class="w-8 h-8 text-orange-300 dark:text-indigo-400"
-  >
+      stroke-linejoin="round"
+      class="moon-bottom-line text-indigo-400 group-hover:animate-[in_0.5s_linear_both]"
+    ></path>
     <path
       d="M2.21288 14.9362C2.95399 16.7127 4.17563 18.2608 5.77754 19.3281C7.37944 20.3955 9.26136 20.9649 11.1863 20.9648C16.5713 20.9648 20.9363 16.5998 20.9363 11.2148C20.9364 9.28985 20.367 7.40793 19.2997 5.80602C18.2323 4.20412 16.7148 2.95388 14.9383 2.21277"
       stroke-linecap="round"
-      stroke-linejoin="round"></path>
+      stroke-linejoin="round"
+      class="text-orange-300 dark:text-indigo-400 duration-500"></path>
   </svg>
 </button>
 
 <style lang="scss">
+  .moon-line,
+  .moon-bottom-line {
+    stroke-dasharray: 60px;
+    stroke-dashoffset: 60px;
+  }
+
   html.dark {
     .sun-line {
-      path {
-        stroke-dasharray: 60px;
-        stroke-dashoffset: 60px;
-      }
-    }
-    .moon-line {
-      path {
-        stroke-dasharray: unset;
-        stroke-dashoffset: unset;
-      }
-    }
-  }
-  .moon-line {
-    path {
       stroke-dasharray: 60px;
       stroke-dashoffset: 60px;
     }
-  }
-  .moon-bottom-line {
-    path {
-      stroke-dasharray: 60px;
-      stroke-dashoffset: 60px;
+    .moon-line,
+    .moon-bottom-line {
+      stroke-dasharray: unset;
+      stroke-dashoffset: unset;
     }
   }
 
-  @keyframes rise {
+  @keyframes in {
     from {
       stroke-dashoffset: 60px;
     }
     to {
       stroke-dashoffset: 0px;
-    }
-  }
-
-  @keyframes out {
-    from {
-      stroke-dashoffset: 0px;
-    }
-    to {
-      stroke-dashoffset: 60px;
     }
   }
 </style>
 
 <script is:inline>
-  const switcher = () => {
-    const theme = (() => {
-      if (
-        typeof localStorage !== "undefined" &&
-        localStorage.getItem("theme")
-      ) {
-        return localStorage.getItem("theme");
-      }
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        return "dark";
-      }
-      return "light";
-    })();
-    console.log(theme);
+  function getTheme() {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  }
 
+  function switcher() {
+    const theme = getTheme();
     if (theme === "dark") {
       document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
@@ -120,5 +80,25 @@
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
     }
-  };
+  }
+
+  var switcherElm = document.getElementById("switcher");
+  switcherElm?.addEventListener("mouseleave", () => {
+    const theme = getTheme();
+    const out = [{ strokeDashoffset: "0px" }, { strokeDashoffset: "60px" }];
+    const option = {
+      duration: 500,
+      easing: "linear",
+    };
+    if (theme === "dark") {
+      const sunLine = switcherElm.getElementsByClassName("sun-line")[0];
+      sunLine.animate(out, option);
+      return;
+    }
+    const moonLine = switcherElm.getElementsByClassName("moon-line")[0];
+    const moonBottomLine =
+      switcherElm.getElementsByClassName("moon-bottom-line")[0];
+    moonLine.animate(out, option);
+    moonBottomLine.animate(out, option);
+  });
 </script>

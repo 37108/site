@@ -148,7 +148,7 @@ export const Index: Story = {
     const canvas = within(canvasElement);
 
     expect(() => canvas.getByLabelText("ボタヌ")).toThrow(
-      /Unable to find a label/
+      /Unable to find a label/,
     );
   },
 };

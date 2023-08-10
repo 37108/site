@@ -5,7 +5,6 @@ module.exports = {
   theme: {
     fontFamily: {
       "rale-way": ["Raleway", "sans-serif"],
-      "noto-sans": ["Noto Sans JP", "sans-serif"],
       jetbrains: ["JetBrains Mono", "monospace"],
     },
     extend: {

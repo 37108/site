@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../../../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
   const collection = await getCollection("article");
@@ -52,7 +52,7 @@ const image = Astro.url.origin + "/assets/og/default.webp";
                   <li class="flex w-full hover:text-neutral-700 dark:hover:text-neutral-500">
                     <a
                       class="w-full"
-                      href={`/articles/tags/${tag === "all" ? "" : tag}`}
+                      href={`/articles/${tag === "all" ? "" : tag}`}
                     >
                       {tag}
                     </a>

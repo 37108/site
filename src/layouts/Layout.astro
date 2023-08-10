@@ -42,6 +42,11 @@ const { title, description, image } = Astro.props;
       </div>
     </header>
     <slot />
+    <footer class="p-6 mx-auto lg:px-10 text-neutral-900 dark:text-neutral-100">
+      <div class="flex justify-end mx-auto max-w-5xl">
+        <small class="text-sm">©2023 37108</small>
+      </div>
+    </footer>
     <style is:global>
       @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Raleway:wght@700&display=swap");
       html {

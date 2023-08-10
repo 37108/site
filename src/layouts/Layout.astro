@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ViewTransitions } from "astro:transitions";
 import ModeButton from "../components/Mode.astro";
 import Analytics from "../components/Analytics.astro";
 
@@ -33,7 +33,9 @@ const { title, description, image } = Astro.props;
     <meta property="og:image" content={image} />
     <meta name="twitter:card" content="summary" />
   </head>
-  <body class="bg-neutral-200 dark:bg-neutral-800 min-h-screen transition-colors duration-300">
+  <body
+    class="bg-neutral-200 dark:bg-neutral-800 min-h-screen transition-colors duration-300"
+  >
     <header class="px-6 mx-auto lg:px-10">
       <div class="flex items-center justify-end mx-auto max-w-5xl h-14">
         <ModeButton />

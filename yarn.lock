@@ -3369,10 +3369,17 @@ safe-buffer@~5.2.0:
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
   integrity sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
 
-sass-formatter@^0.7.5, sass-formatter@^0.7.6:
+sass-formatter@^0.7.5:
   version "0.7.6"
   resolved "https://registry.yarnpkg.com/sass-formatter/-/sass-formatter-0.7.6.tgz#aa64b4120c375b71b8b7e18ff60b5f3e17081e3e"
   integrity sha512-hXdxU6PCkiV3XAiSnX+XLqz2ohHoEnVUlrd8LEVMAI80uB1+OTScIkH9n6qQwImZpTye1r1WG1rbGUteHNhoHg==
+  dependencies:
+    suf-log "^2.5.3"
+
+sass-formatter@^0.7.6:
+  version "0.7.7"
+  resolved "https://registry.yarnpkg.com/sass-formatter/-/sass-formatter-0.7.7.tgz#13159083a1ca3a752a537ad25fe1b66e16a4a1d2"
+  integrity sha512-axtQ7c7Cf4UgHsD8e4okhIkkc90+tdgBIfUMx69+qJuMNq9EOo2k+RH/mDKj0XeA5z3nC1Ca5TCntuxRhI+1MA==
   dependencies:
     suf-log "^2.5.3"
 

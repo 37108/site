@@ -18,7 +18,7 @@ const { entry } = Astro.props as {
 const { Content, headings } = await entry.render();
 
 const date = Intl.DateTimeFormat("ja-JP", { dateStyle: "short" }).format(
-  entry.data.date
+  entry.data.date,
 );
 
 const image = entry.data.image.startsWith("http")

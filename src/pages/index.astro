@@ -5,7 +5,7 @@ import Card from "../components/Card.astro";
 
 const posts = (await getCollection("article")).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime()
-);
+).slice(0,6);
 
 const image = Astro.url.origin + "/assets/og/default.webp";
 ---

@@ -13,7 +13,7 @@ const { title, description, image } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="ja" class="scroll-smooth">
+<html lang="ja" class="scroll-smooth" transition:persist>
   <head>
     <ViewTransitions />
     <meta charset="UTF-8" />
@@ -55,19 +55,21 @@ const { title, description, image } = Astro.props;
       }
     </style>
     <script is:inline>
-      console.log("is this eval ?");
-      console.log(localStorage.theme);
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-        localStorage.theme = "dark";
-      } else {
-        document.documentElement.classList.remove("dark");
-        localStorage.theme = "light";
+      function setup() {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          localStorage.theme = "dark";
+        } else {
+          document.documentElement.classList.remove("dark");
+          localStorage.theme = "light";
+        }
       }
+      setup();
+      document.addEventListener("astro:after-swap", setup);
     </script>
   </body>
 </html>

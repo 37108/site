@@ -55,6 +55,8 @@ const { title, description, image } = Astro.props;
       }
     </style>
     <script is:inline>
+      console.log("is this eval ?");
+      console.log(localStorage.theme);
       if (
         localStorage.theme === "dark" ||
         (!("theme" in localStorage) &&

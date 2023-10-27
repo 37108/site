@@ -1,6 +1,5 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import ModeButton from "../components/Mode.astro";
 import Analytics from "../components/Analytics.astro";
 
 export interface Props {
@@ -36,17 +35,7 @@ const { title, description, image } = Astro.props;
   <body
     class="bg-neutral-200 dark:bg-neutral-800 min-h-screen transition-colors duration-300"
   >
-    <header class="px-6 mx-auto lg:px-10">
-      <div class="flex items-center justify-end mx-auto max-w-5xl h-14">
-        <ModeButton />
-      </div>
-    </header>
     <slot />
-    <footer class="p-6 mx-auto lg:px-10 text-neutral-900 dark:text-neutral-100">
-      <div class="flex justify-end mx-auto max-w-5xl">
-        <small class="text-sm">©2023 37108</small>
-      </div>
-    </footer>
     <style is:global>
       html {
         -webkit-font-smoothing: antialiased;

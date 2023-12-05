@@ -13,7 +13,10 @@ const formattedDate = Intl.DateTimeFormat("ja-JP", {
 }).format(date);
 ---
 
-<a href={href} class="text-neutral-900 dark:text-neutral-100 hover:opacity-80">
+<a
+  href={href}
+  class="grid grid-rows-[subgrid] row-[span_3] gap-2 text-neutral-900 dark:text-neutral-100 hover:opacity-80"
+>
   <img
     src={image}
     alt=""
@@ -21,8 +24,8 @@ const formattedDate = Intl.DateTimeFormat("ja-JP", {
     decoding="async"
     class="w-full h-auto aspect-video object-cover card-image"
   />
-  <p class="mt-2 text-xl line-clamp-2">{title}</p>
-  <p class="mt-2 text-base text-right">{formattedDate}</p>
+  <p class="text-xl line-clamp-2">{title}</p>
+  <p class="text-base text-right">{formattedDate}</p>
 </a>
 
 <style>

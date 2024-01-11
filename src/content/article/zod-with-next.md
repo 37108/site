@@ -292,7 +292,7 @@ const {
 });
 ```
 
-ただ、 React Hook Form の v7では、 `handleSubmit` の引数自体は正しく `z.output<typeof CreateUser>` であるのに、型情報はが `z.input<typeof CreateUser>` になるので下記のように変換をかける必要があります ([issue](https://github.com/react-hook-form/react-hook-form/issues/8382))。
+ただ、 React Hook Form の v7では、 `handleSubmit` の引数自体は正しく `z.output<typeof CreateUser>` であるのに、型情報は `z.input<typeof CreateUser>` になるので下記のように変換をかける必要があります ([issue](https://github.com/react-hook-form/react-hook-form/issues/8382))。
 
 ```tsx
 <form

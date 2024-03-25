@@ -121,13 +121,17 @@ const image = entry.data.image.startsWith("http")
 
     p {
       @apply whitespace-pre-wrap;
+
+      &:has(img) {
+        margin-top: 16px !important;
+      }
     }
 
     img {
-      @apply w-full h-auto object-contain mx-auto bg-neutral-600;
+      @apply w-full h-auto object-contain mx-auto max-w-xl;
     }
     iframe {
-      @apply w-full h-auto aspect-video mx-auto;
+      @apply w-full h-auto aspect-video mx-auto max-w-2xl;
     }
 
     a {

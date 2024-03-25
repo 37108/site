@@ -20,10 +20,8 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Install, build, and upload your site
+      - name: Install, build, and upload your site output
         uses: withastro/action@v2
-        with:
-          package-manager: pnpm@latest
 
   deploy:
     needs: build

@@ -8,6 +8,7 @@ import { rehypeLazy } from "./src/lib/lazy-loading";
 // https://astro.build/config
 export default defineConfig({
   site: "https://37108.dev",
+  output: "static",
   integrations: [
     partytown({
       config: {

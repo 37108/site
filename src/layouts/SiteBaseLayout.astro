@@ -33,8 +33,16 @@ const { title, description, image } = Astro.props;
   </header>
   <slot />
   <footer class="p-6 mx-auto lg:px-10 text-neutral-900 dark:text-neutral-100">
-    <div class="flex justify-end mx-auto max-w-5xl">
+    <div class="flex flex-col items-end mx-auto max-w-5xl">
       <small class="text-sm">©2023 37108</small>
+      <small class="mt-4"
+        >This website uses Google Analytics. See <a
+          class="underline"
+          href="https://policies.google.com/technologies/partner-sites"
+          >"How Google uses information from sites or apps that use our services
+          – Privacy & Terms – Google"</a
+        > for more information.</small
+      >
     </div>
   </footer>
 </HeadLayout>

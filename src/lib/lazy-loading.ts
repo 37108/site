@@ -15,8 +15,6 @@ export const rehypeLazy: Plugin = () => {
           sizes.width = res.width;
           sizes.height = res.height;
         }
-
-        const res = sizeOf(("./public" + element.properties.src) as string);
         element.properties = {
           ...(element.properties || {}),
           loading: "lazy",

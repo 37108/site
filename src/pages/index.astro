@@ -46,7 +46,7 @@ const image = Astro.url.origin + "/assets/og/default.webp";
         />
         <div class="relative flex items-center justify-center sm:w-1/2 h-full">
           <h1
-            class="text-5xl/normal text-neutral-900 dark:text-neutral-100 text-right font-bold font-rale-way"
+            class="text-5xl/normal text-neutral-900 dark:text-neutral-100 text-right font-bold font-title"
           >
             Out from my Head and Experiences
           </h1>
@@ -56,7 +56,7 @@ const image = Astro.url.origin + "/assets/og/default.webp";
     <section class="mt-20 px-6 lg:px-10">
       <div class="max-w-5xl mx-auto">
         <h2
-          class="text-4xl/normal text-neutral-900 dark:text-neutral-100 font-bold"
+          class="text-4xl/normal text-neutral-700 dark:text-neutral-300 font-bold font-title"
         >
           Articles
         </h2>
@@ -91,32 +91,34 @@ const image = Astro.url.origin + "/assets/og/default.webp";
     <section class="mt-20 px-6 lg:px-10">
       <div class="max-w-5xl mx-auto">
         <h2
-          class="text-4xl/normal text-neutral-900 dark:text-neutral-100 font-bold"
+          class="text-4xl/normal text-neutral-700 dark:text-neutral-300 font-bold font-title"
         >
           Speaks
         </h2>
         <div class="text-base text-neutral-900 dark:text-neutral-100 mt-4">
           {
             speaks.map((item) => (
-              <a href={item.href} class="group flex flex-row items-center py-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-4 h-4"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z"
-                  />
-                </svg>
+              <a href={item.href} class="group flex flex-row items-start py-3">
+                <div class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z"
+                    />
+                  </svg>
 
-                <span class="ml-2 group-hover:opacity-60">
-                  {new Date(item.date).toLocaleDateString("ja-JP")}
-                </span>
+                  <span class="ml-2 group-hover:opacity-60">
+                    {new Date(item.date).toLocaleDateString("ja-JP")}
+                  </span>
+                </div>
                 <span class="ml-8 group-hover:opacity-60">{item.title}</span>
               </a>
             ))
@@ -126,5 +128,3 @@ const image = Astro.url.origin + "/assets/og/default.webp";
     </section>
   </main>
 </Layout>
-
-<style lang="scss"></style>

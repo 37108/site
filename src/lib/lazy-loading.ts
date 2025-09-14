@@ -2,6 +2,7 @@ import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 import type { Element } from "hast";
 import sizeOf from "image-size";
+import { readFileSync } from "fs";
 
 export const rehypeLazy: Plugin = () => {
   return (tree) => {
@@ -11,9 +12,14 @@ export const rehypeLazy: Plugin = () => {
           {};
         const src = element.properties.src;
         if (src && typeof src === "string" && src.startsWith("/")) {
-          const res = sizeOf("./public" + element.properties.src);
-          sizes.width = res.width;
-          sizes.height = res.height;
+          try {
+            const buffer = readFileSync("./public" + src);
+            const res = sizeOf(buffer);
+            sizes.width = res.width;
+            sizes.height = res.height;
+          } catch {
+            // Ignore if file doesn't exist
+          }
         }
         element.properties = {
           ...(element.properties || {}),

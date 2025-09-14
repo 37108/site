@@ -11,3 +11,7 @@ html {
   font-family: "Montserrat", "Zen Kaku Gothic Antique", sans-serif;
   font-feature-settings: "palt" 1;
 }
+
+.article h2 {
+  border-bottom: 1px solid red;
+}

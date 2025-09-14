@@ -2,7 +2,6 @@ import { defineConfig } from "astro/config";
 import partytown from "@astrojs/partytown";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import { rehypeLazy } from "./src/lib/lazy-loading";
 import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
@@ -24,7 +23,6 @@ export default defineConfig({
     shikiConfig: {
       theme: "dark-plus",
     },
-    rehypePlugins: [rehypeLazy],
   },
 
   vite: {

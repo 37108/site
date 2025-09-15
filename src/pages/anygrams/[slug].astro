@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Layout from "../../layouts/SiteBaseLayout.astro";
+
+export async function getStaticPaths() {
+  const articleEntries = await getCollection("anygrams");
+
+  return articleEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props as {
+  entry: CollectionEntry<"anygrams">;
+};
+const { Content } = await entry.render();
+
+const image = Astro.url.origin + "/assets/og/default.webp";
+---
+
+<Layout title={entry.data.title} description={entry.data.title} image={image}>
+  <main
+    class="px-6 mx-auto max-w-3xl min-h-dvh text-neutral-900 dark:text-neutral-100 md:mt-20 lg:px-10"
+  >
+    <h1 class="text-xl">{entry.data.title}</h1>
+    <article class="article mt-8 mb-20 space-y-10 text-base/7">
+      <Content />
+    </article>
+  </main>
+</Layout>

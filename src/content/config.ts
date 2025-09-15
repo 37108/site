@@ -10,4 +10,10 @@ const article = defineCollection({
   }),
 });
 
-export const collections = { article };
+const anygrams = defineCollection({
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
+export const collections = { article, anygrams };

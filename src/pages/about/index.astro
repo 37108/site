@@ -1,0 +1,35 @@
+---
+import Layout from "../../layouts/SiteBaseLayout.astro";
+
+const image = Astro.url.origin + "/assets/og/default.webp";
+---
+
+<Layout title={"About me"} description={"describe who am I."} image={image}>
+  <main
+    class="mt-10 px-6 mx-auto max-w-3xl text-neutral-900 dark:text-neutral-100 lg:px-10"
+  >
+    <h1 class="text-2xl">About Me</h1>
+    <div class="mt-6">
+      <p>An Application Developer. I'm good at frontend and development.</p>
+      <p>I try to do anything if you wish...</p>
+    </div>
+    <div class="mt-6 space-y-4 pl-4">
+      <a
+        href="https://github.com/37108"
+        class="block text-md/normal text-indigo-400 hover:underline"
+        >GitHub: 37108</a
+      >
+      <a
+        href="https://x.com/_37108"
+        class="block text-md/normal text-indigo-400 hover:underline"
+        >X: _37108</a
+      >
+      <a
+        href="https://dev.classmethod.jp/author/oku-takuya/"
+        class="block text-md/normal text-indigo-400 hover:underline"
+        >Company Blog: DevelopersIO</a
+      >
+    </div>
+    <div class="mt-6">Please contact via X.</div>
+  </main>
+</Layout>

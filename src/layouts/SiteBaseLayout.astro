@@ -32,11 +32,18 @@ const { title, description, image } = Astro.props;
           class="border-transparent border-b dark:hover:border-neutral-100 pb-1"
           >Anygrams</a
         >
+        <a
+          href="/about"
+          class="border-transparent border-b dark:hover:border-neutral-100 pb-1"
+          >About</a
+        >
       </div>
       <ModeButton />
     </div>
   </header>
-  <slot />
+  <div class="min-h-[calc(100dvh-58px)]">
+    <slot />
+  </div>
   <footer class="p-6 mx-auto lg:px-10 text-neutral-900 dark:text-neutral-100">
     <div class="flex flex-col items-end mx-auto max-w-5xl">
       <small class="text-sm">©2025 37108</small>

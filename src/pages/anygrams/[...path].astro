@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/SiteBaseLayout.astro";
-import { undefined } from "astro:schema";
 
 export async function getStaticPaths() {
   const collection = await getCollection("anygrams");

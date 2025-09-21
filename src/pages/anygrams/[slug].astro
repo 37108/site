@@ -1,21 +1,18 @@
 ---
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/SiteBaseLayout.astro";
 
 export async function getStaticPaths() {
-  const articleEntries = await getCollection("anygrams");
+  const articleEntries = await getCollection("anygram");
 
   return articleEntries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
 
-const { entry } = Astro.props as {
-  entry: CollectionEntry<"anygrams">;
-};
-const { Content } = await entry.render();
+const { entry } = Astro.props;
+const { Content } = await render(entry);
 
 const image = Astro.url.origin + "/assets/og/default.webp";
 ---

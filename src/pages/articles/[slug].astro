@@ -1,21 +1,18 @@
 ---
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/SiteBaseLayout.astro";
 
 export async function getStaticPaths() {
   const articleEntries = await getCollection("article");
 
   return articleEntries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
 
-const { entry } = Astro.props as {
-  entry: CollectionEntry<"article">;
-};
-const { Content, headings } = await entry.render();
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
 
 const date = Intl.DateTimeFormat("ja-JP", { dateStyle: "short" }).format(
   entry.data.date,

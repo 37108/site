@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/HeadLayout.astro";
+import "reveal.js/dist/reveal.css";
+import "reveal.js/dist/theme/black.css";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("slide");
+
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const image = Astro.url.origin + "/assets/og/default.webp";
+---
+
+<Layout title={entry.data.title} description="" image={image}>
+  <div class="reveal">
+    <div class="slides">
+      <section data-markdown set:html={entry.body} />
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import Reveal from "reveal.js";
+  import Markdown from "reveal.js/plugin/markdown/markdown.esm.js";
+
+  const reveal = document.querySelector(".reveal");
+  if (reveal) {
+    const deck = new Reveal({
+      plugins: [Markdown],
+    });
+    deck.initialize();
+  }
+</script>

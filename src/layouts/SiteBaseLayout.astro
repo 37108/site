@@ -12,7 +12,7 @@ const { title, description, image } = Astro.props;
 ---
 
 <HeadLayout title={title} description={description} image={image}>
-  <div class="min-h-[calc(100dvh-58px)]">
+  <div class="min-h-dvh">
     <slot />
   </div>
   <footer

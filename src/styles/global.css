@@ -16,14 +16,14 @@
   --base-text: #222327;
   --base-text-muted: #575966;
   --base-background: #eef3f9;
-  --base-border: #e5e5e5;
+  --base-border: #212531;
 }
 
 html.dark:root {
   --base-text: #afb4ad;
   --base-text-muted: #898b86;
   --base-background: #212226;
-  --base-border: #e5e5e5;
+  --base-border: #c5c3c4;
 }
 
 html {

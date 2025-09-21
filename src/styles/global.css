@@ -56,10 +56,6 @@ html {
   white-space: pre-wrap;
 }
 
-.article strong {
-  font-size: 1rem;
-}
-
 .article p:has(img) {
   margin-top: 1rem !important;
 }
@@ -88,10 +84,6 @@ html {
 
 .article a:hover {
   text-decoration: underline;
-}
-
-.article strong {
-  font-size: 600;
 }
 
 .article code {

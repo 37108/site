@@ -56,6 +56,10 @@ html {
   white-space: pre-wrap;
 }
 
+.article strong {
+  font-size: 1rem;
+}
+
 .article p:has(img) {
   margin-top: 1rem !important;
 }

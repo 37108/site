@@ -33,10 +33,10 @@ const image = Astro.url.origin + "/assets/og/default.webp";
 ---
 
 <Layout title="articles" description="all articles" image={image}>
-  <main>
+  <main class="text-text">
     <section class="px-6 lg:px-10">
       <div
-        class="grid grid-cols-2 md:grid-cols-12 max-w-5xl mx-auto min-h-screen h-max text-neutral-900 dark:text-neutral-100 text-base">
+        class="grid grid-cols-2 md:grid-cols-12 max-w-5xl mx-auto min-h-screen h-max text-base">
         <div
           class="md:col-span-3 border-neutral-800 border-l border-r dark:border-neutral-200">
           <div class="mt-20">
@@ -47,9 +47,9 @@ const image = Astro.url.origin + "/assets/og/default.webp";
             <ul class="flex flex-col gap-1.5 mt-2 pl-4">
               {
                 tags.map((tag) => (
-                  <li class="flex w-full hover:text-neutral-700 dark:hover:text-neutral-500">
+                  <li class="flex w-full">
                     <a
-                      class="w-full"
+                      class="w-full hover:opacity-50"
                       href={`/articles/${tag === "all" ? "" : tag}`}>
                       {tag}
                     </a>
@@ -69,8 +69,10 @@ const image = Astro.url.origin + "/assets/og/default.webp";
             <ul class="flex flex-col gap-1.5 mt-2 pl-4">
               {
                 articles.map((article) => (
-                  <li class="flex w-full hover:text-neutral-700 dark:hover:text-neutral-500">
-                    <a class="w-full" href={`/articles/${article.id}`}>
+                  <li class="flex w-full">
+                    <a
+                      class="w-full hover:opacity-50"
+                      href={`/articles/${article.id}`}>
                       {article.data.title}
                     </a>
                   </li>
@@ -83,11 +85,6 @@ const image = Astro.url.origin + "/assets/og/default.webp";
         <div
           class="hidden md:flex md:justify-between md:flex-col md:col-span-2 border-neutral-800 dark:border-neutral-200 border-l border-r h-full">
           <div></div>
-          <a
-            href="/"
-            class="block my-10 pl-4 w-full hover:text-neutral-700 dark:hover:text-neutral-500">
-            back to home
-          </a>
         </div>
       </div>
     </section>

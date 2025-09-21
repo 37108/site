@@ -6,6 +6,24 @@
 
 @theme {
   --font-title: "Poiret One";
+  --color-text: var(--base-text);
+  --color-text-muted: var(--base-text-muted);
+  --color-background: var(--base-background);
+  --color-border: var(--base-border);
+}
+
+:root {
+  --base-text: #222327;
+  --base-text-muted: #575966;
+  --base-background: #eef3f9;
+  --base-border: #e5e5e5;
+}
+
+html.dark:root {
+  --base-text: #afb4ad;
+  --base-text-muted: #898b86;
+  --base-background: #212226;
+  --base-border: #e5e5e5;
 }
 
 html {

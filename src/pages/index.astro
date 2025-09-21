@@ -13,7 +13,7 @@ const image = Astro.url.origin + "/assets/og/default.webp";
 ---
 
 <Layout title="37108's blog" description="articles from 37108" image={image}>
-  <main class="mt-10 mb-20">
+  <main class="mt-10 mb-20 text-text">
     <section class="px-6 lg:px-10">
       <div class="relative w-fu1l h-100 max-w-5xl mx-auto">
         <img
@@ -25,8 +25,7 @@ const image = Astro.url.origin + "/assets/og/default.webp";
           class="absolute w-full max-w-[400px] h-auto aspect-square"
         />
         <div class="relative flex items-center justify-center sm:w-1/2 h-full">
-          <h1
-            class="text-5xl/normal text-neutral-900 dark:text-neutral-100 text-right font-bold font-title">
+          <h1 class="text-5xl/normal text-right font-bold font-title">
             Out from my Head and Experiences
           </h1>
         </div>
@@ -34,10 +33,7 @@ const image = Astro.url.origin + "/assets/og/default.webp";
     </section>
     <section class="mt-20 px-6 lg:px-10">
       <div class="max-w-5xl mx-auto">
-        <h2
-          class="text-4xl/normal text-neutral-700 dark:text-neutral-300 font-bold font-title">
-          Articles
-        </h2>
+        <h2 class="text-4xl/normal font-bold font-title">Articles</h2>
         <div
           class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-8 mt-6">
           {
@@ -53,7 +49,7 @@ const image = Astro.url.origin + "/assets/og/default.webp";
         </div>
         <a href="/articles/" class="group relative inline-flex mt-10">
           <span
-            class="inline-flex px-6 py-2 border border-neutral-800 text-base text-neutral-900 bg-neutral-100 dark:border-neutral-200 dark:text-neutral-100 dark:bg-neutral-800 group-hover:translate-x-2 group-hover:translate-y-3 duration-300">
+            class="inline-flex px-6 py-2 border border-neutral-800 text-base dark:border-neutral-200 group-hover:translate-x-2 group-hover:translate-y-3 duration-300">
             show more</span
           >
           <div
@@ -63,7 +59,7 @@ const image = Astro.url.origin + "/assets/og/default.webp";
       </div>
     </section>
 
-    <section class="mt-20 px-6 lg:px-10 text-neutral-700 dark:text-neutral-300">
+    <section class="mt-20 px-6 lg:px-10">
       <div class="max-w-5xl mx-auto">
         <h2 class="text-4xl/normal font-bold font-title">Speaks</h2>
         <div class="space-y-4 mt-6">

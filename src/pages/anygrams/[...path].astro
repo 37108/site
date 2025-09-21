@@ -21,16 +21,17 @@ const image = Astro.url.origin + "/assets/og/default.webp";
 ---
 
 <Layout title="articles" description="all articles" image={image}>
-  <main
-    class="px-6 mx-auto mt-10 max-w-3xl min-h-dvh text-neutral-900 dark:text-neutral-100 lg:px-10">
+  <main class="px-6 mx-auto mt-10 max-w-3xl min-h-dvh text-text lg:px-10">
     <h1 class="pb-2 border-b border-neutral-800 dark:border-neutral-200">
       Anygrams
     </h1>
     <ul class="flex flex-col gap-1.5 mt-2">
       {
         anygrams.map((anygrams) => (
-          <li class="flex w-full hover:text-neutral-700 dark:hover:text-neutral-500">
-            <a class="w-full" href={`/anygrams/${anygrams.id}`}>
+          <li class="flex w-full">
+            <a
+              class="w-full hover:opacity-50"
+              href={`/anygrams/${anygrams.id}`}>
               {anygrams.data.title}
             </a>
           </li>

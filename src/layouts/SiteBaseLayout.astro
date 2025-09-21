@@ -22,26 +22,22 @@ const { title, description, image } = Astro.props;
         class="flex items-center justify-between mx-auto max-w-5xl h-14 flex-1">
         <div
           class="flex gap-4 text-sm text-neutral-900 dark:text-neutral-100 sm:text-sm">
-          <a
-            href="/"
-            class="border-transparent border-b dark:hover:border-neutral-100 pb-1">
-            Home
-          </a>
-          <a
-            href="/articles"
-            class="border-transparent border-b dark:hover:border-neutral-100 pb-1"
-            >Articles</a
-          >
-          <a
-            href="/anygrams"
-            class="border-transparent border-b dark:hover:border-neutral-100 pb-1"
-            >Anygrams</a
-          >
-          <a
-            href="/about"
-            class="border-transparent border-b dark:hover:border-neutral-100 pb-1"
-            >About</a
-          >
+          {
+            [
+              { title: "home", href: "/" },
+              { title: "Articles", href: "/articles" },
+              { title: "Articles", href: "/articles" },
+              { title: "Anygrams", href: "/anygrams" },
+              // { title: "Speaks", href: "/slides" },
+              { title: "About", href: "/about" },
+            ].map((item) => (
+              <a
+                href={item.href}
+                class="border-transparent border-b dark:hover:border-neutral-100 pb-1">
+                {item.title}
+              </a>
+            ))
+          }
         </div>
         <ModeButton />
       </div>

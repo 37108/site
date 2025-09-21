@@ -36,8 +36,7 @@ pattern 属性でどのような入力を許可しているかをわかりやす
     name="digit"
     type="text"
     pattern="[\d]{3}"
-    aria-describedby="digit-description"
-  />
+    aria-describedby="digit-description" />
   <span id="digit-description">3 digit number</span>
   <button>submit</button>
 </form>

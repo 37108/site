@@ -6,29 +6,6 @@ import { sort } from "../lib/sort";
 
 const posts = sort(await getCollection("article")).slice(0, 6);
 
-const speaks = [
-  {
-    title: "React でプロジェクトを始める。コードをちょっとよくする。",
-    date: "2024-02-12",
-    href: "/articles/2024-02-02-talk",
-  },
-  {
-    title: "Next.js のServer Actions の所感",
-    date: "2023-07-29",
-    href: "/articles/2023-07-29-talk",
-  },
-  {
-    title: "直近のフロントエンドの話",
-    date: "2023-06-26",
-    href: "/articles/2023-06-22-talk",
-  },
-  {
-    title: "ToB ToC 向けの開発を通じてのフロントエンドの違い",
-    date: "2023-04-14",
-    href: "https://findy.connpass.com/event/278455/",
-  },
-];
-
 const image = Astro.url.origin + "/assets/og/default.webp";
 ---
 
@@ -46,8 +23,7 @@ const image = Astro.url.origin + "/assets/og/default.webp";
         />
         <div class="relative flex items-center justify-center sm:w-1/2 h-full">
           <h1
-            class="text-5xl/normal text-neutral-900 dark:text-neutral-100 text-right font-bold font-title"
-          >
+            class="text-5xl/normal text-neutral-900 dark:text-neutral-100 text-right font-bold font-title">
             Out from my Head and Experiences
           </h1>
         </div>
@@ -56,74 +32,31 @@ const image = Astro.url.origin + "/assets/og/default.webp";
     <section class="mt-20 px-6 lg:px-10">
       <div class="max-w-5xl mx-auto">
         <h2
-          class="text-4xl/normal text-neutral-700 dark:text-neutral-300 font-bold font-title"
-        >
+          class="text-4xl/normal text-neutral-700 dark:text-neutral-300 font-bold font-title">
           Articles
         </h2>
         <div
-          class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-8 mt-6"
-        >
+          class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-8 mt-6">
           {
-            posts.map(({ data, slug }) => (
+            posts.map(({ data, id }) => (
               <Card
                 title={data.title}
                 image={data.image}
                 date={data.date}
-                href={`/articles/${slug}`}
+                href={`/articles/${id}`}
               />
             ))
           }
         </div>
         <a href="/articles/" class="group relative inline-flex mt-10">
           <span
-            class="inline-flex px-6 py-2 border border-neutral-800 text-base text-neutral-900 bg-neutral-100 dark:border-neutral-200 dark:text-neutral-100 dark:bg-neutral-800 group-hover:translate-x-2 group-hover:translate-y-3 duration-300"
-          >
+            class="inline-flex px-6 py-2 border border-neutral-800 text-base text-neutral-900 bg-neutral-100 dark:border-neutral-200 dark:text-neutral-100 dark:bg-neutral-800 group-hover:translate-x-2 group-hover:translate-y-3 duration-300">
             show more</span
           >
           <div
-            class="-z-10 absolute -right-2 -bottom-3 w-full h-full border border-neutral-400 dark:border-neutral-500"
-          >
+            class="-z-10 absolute -right-2 -bottom-3 w-full h-full border border-neutral-400 dark:border-neutral-500">
           </div>
         </a>
-      </div>
-    </section>
-
-    <section class="mt-20 px-6 lg:px-10">
-      <div class="max-w-5xl mx-auto">
-        <h2
-          class="text-4xl/normal text-neutral-700 dark:text-neutral-300 font-bold font-title"
-        >
-          Speaks
-        </h2>
-        <div class="text-base text-neutral-900 dark:text-neutral-100 mt-4">
-          {
-            speaks.map((item) => (
-              <a href={item.href} class="group flex flex-row items-start py-3">
-                <div class="flex items-center gap-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-4"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z"
-                    />
-                  </svg>
-
-                  <span class="ml-2 group-hover:opacity-60">
-                    {new Date(item.date).toLocaleDateString("ja-JP")}
-                  </span>
-                </div>
-                <span class="ml-8 group-hover:opacity-60">{item.title}</span>
-              </a>
-            ))
-          }
-        </div>
       </div>
     </section>
   </main>

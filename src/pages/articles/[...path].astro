@@ -36,15 +36,12 @@ const image = Astro.url.origin + "/assets/og/default.webp";
   <main>
     <section class="px-6 lg:px-10">
       <div
-        class="grid grid-cols-2 md:grid-cols-12 max-w-5xl mx-auto min-h-screen h-max text-neutral-900 dark:text-neutral-100 text-base"
-      >
+        class="grid grid-cols-2 md:grid-cols-12 max-w-5xl mx-auto min-h-screen h-max text-neutral-900 dark:text-neutral-100 text-base">
         <div
-          class="md:col-span-3 border-neutral-800 border-l border-r dark:border-neutral-200"
-        >
+          class="md:col-span-3 border-neutral-800 border-l border-r dark:border-neutral-200">
           <div class="mt-20">
             <h2
-              class="pl-4 pb-2 border-b border-neutral-800 dark:border-neutral-200"
-            >
+              class="pl-4 pb-2 border-b border-neutral-800 dark:border-neutral-200">
               filter by tag
             </h2>
             <ul class="flex flex-col gap-1.5 mt-2 pl-4">
@@ -53,8 +50,7 @@ const image = Astro.url.origin + "/assets/og/default.webp";
                   <li class="flex w-full hover:text-neutral-700 dark:hover:text-neutral-500">
                     <a
                       class="w-full"
-                      href={`/articles/${tag === "all" ? "" : tag}`}
-                    >
+                      href={`/articles/${tag === "all" ? "" : tag}`}>
                       {tag}
                     </a>
                   </li>
@@ -67,8 +63,7 @@ const image = Astro.url.origin + "/assets/og/default.webp";
         <div class="md:col-span-7 h-full">
           <div class="mt-45">
             <h1
-              class="pl-4 pb-2 border-b border-neutral-800 dark:border-neutral-200"
-            >
+              class="pl-4 pb-2 border-b border-neutral-800 dark:border-neutral-200">
               Articles
             </h1>
             <ul class="flex flex-col gap-1.5 mt-2 pl-4">
@@ -86,13 +81,11 @@ const image = Astro.url.origin + "/assets/og/default.webp";
         </div>
 
         <div
-          class="hidden md:flex md:justify-between md:flex-col md:col-span-2 border-neutral-800 dark:border-neutral-200 border-l border-r h-full"
-        >
+          class="hidden md:flex md:justify-between md:flex-col md:col-span-2 border-neutral-800 dark:border-neutral-200 border-l border-r h-full">
           <div></div>
           <a
             href="/"
-            class="block my-10 pl-4 w-full hover:text-neutral-700 dark:hover:text-neutral-500"
-          >
+            class="block my-10 pl-4 w-full hover:text-neutral-700 dark:hover:text-neutral-500">
             back to home
           </a>
         </div>

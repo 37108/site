@@ -120,8 +120,7 @@ const Component = ({ setLoading }) => {
           setLoading(true);
           // do something
           setLoading(false);
-        }}
-      >
+        }}>
         do something
       </button>
     </div>

@@ -34,8 +34,7 @@ tailwind css のクラス名が途中出てきますがなんとなく読み取�
   src="https://picsum.photos/400/300"
   width="400"
   height="300"
-  class="w-full h-auto"
-/>
+  class="w-full h-auto" />
 ```
 
 次に画像の実際のサイズと width height 属性が異なっていた場合です。例えば下記のようなコードでかつ親要素の高さが十分にある場合にはレイアウトシフトが起きます。
@@ -45,8 +44,7 @@ tailwind css のクラス名が途中出てきますがなんとなく読み取�
   src="https://picsum.photos/400/300"
   width="400"
   height="200"
-  class="w-100 h-auto"
-/>
+  class="w-100 h-auto" />
 ```
 
 ブラウザの動きから推測するにこのようなことが発生してそうです。
@@ -70,8 +68,7 @@ aspect-ratio を指定することでボックスのアスペクト比を決め�
 ```html
 <img
   src="https://picsum.photos/400/300"
-  class="w-100 h-auto aspect-video object-cover"
-/>
+  class="w-100 h-auto aspect-video object-cover" />
 ```
 
 apect-ratio は img 要素だけでなく適用できるので、iframe などに関しても同様のテクニックで必要なだけスペースを確保することができます。

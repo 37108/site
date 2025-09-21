@@ -145,8 +145,7 @@ export default function Error({
         onClick={
           // Attempt to recover by trying to re-render the segment
           () => reset()
-        }
-      >
+        }>
         Try again
       </button>
     </div>

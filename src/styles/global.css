@@ -160,3 +160,37 @@ html {
   padding-bottom: 8px;
   font-weight: 400;
 }
+
+.reveal {
+  color: var(--base-text) !important;
+  background-color: var(--base-background) !important;
+  font-family: "Montserrat", "Zen Kaku Gothic Antique", sans-serif !important;
+  font-feature-settings: "palt" 1 !important;
+}
+
+.reveal h2 {
+  color: var(--base-text) !important;
+}
+
+.reveal h3 {
+  color: var(--base-text) !important;
+}
+
+.reveal h4 {
+  color: var(--base-text) !important;
+}
+
+.reveal p {
+  color: var(--base-text-muted) !important;
+}
+
+.reveal blockquote {
+  background-color: transparent !important;
+  border-left: 1px solid var(--base-border) !important;
+}
+
+.reveal pre {
+  border-left: 1px solid var(--base-border) !important;
+  box-shadow: none !important;
+  font-family: "JetBrains Mono", monospace !important;
+}

@@ -1,7 +1,7 @@
 ---
 title: 知識を編む
 description: ブログや登壇を通じて断片的な知識を体系化し、汎用的な力を身につける方法を解説します。テーマの明確化、ユーザーレベルの意識、登壇とブログの使い分けなど、効果的な情報発信のポイントをまとめました。
-date: 2025-10-29
+date: 2025-09-29
 image: /assets/articles/weaving-knowledge/cover.webp
 tags: ["poem"]
 ---

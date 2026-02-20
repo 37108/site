@@ -168,20 +168,26 @@ html {
   font-feature-settings: "palt" 1 !important;
 }
 
-.reveal h2 {
+.reveal h2,
+.reveal h3,
+.reveal h4 {
   color: var(--base-text) !important;
+  letter-spacing: 0.02em !important;
 }
 
 .reveal h3 {
-  color: var(--base-text) !important;
-}
-
-.reveal h4 {
-  color: var(--base-text) !important;
+  font-size: 1.4em !important;
+  margin-bottom: 0.6em !important;
 }
 
 .reveal p {
   color: var(--base-text-muted) !important;
+  line-height: 1.8 !important;
+}
+
+.reveal strong {
+  color: var(--base-text) !important;
+  font-weight: 600 !important;
 }
 
 .reveal blockquote {
@@ -193,4 +199,47 @@ html {
   border-left: 1px solid var(--base-border) !important;
   box-shadow: none !important;
   font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.48em !important;
+  width: 95% !important;
+  margin: 0.5em auto !important;
+}
+
+.reveal ul,
+.reveal ol {
+  text-align: left !important;
+}
+
+.reveal ul li,
+.reveal ol li {
+  color: var(--base-text-muted) !important;
+  font-size: 0.75em !important;
+  line-height: 2 !important;
+  margin-bottom: 0.2em !important;
+}
+
+.reveal ul li strong,
+.reveal ol li strong {
+  color: var(--base-text) !important;
+}
+
+.reveal code {
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.9em !important;
+}
+
+.reveal pre code {
+  line-height: 1.6 !important;
+  font-size: 1em !important;
+}
+
+.reveal .katex {
+  font-size: 1.1em !important;
+}
+
+.reveal .katex-display {
+  margin: 0.6em 0 !important;
+}
+
+.reveal section p:last-child {
+  margin-bottom: 0 !important;
 }

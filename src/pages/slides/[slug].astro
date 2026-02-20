@@ -21,9 +21,7 @@ const image = Astro.url.origin + `/og/slide/${entry.id}.png`;
 <Layout title={entry.data.title} description="" image={image}>
   <div class="reveal">
     <div class="slides">
-      <section data-markdown>
-        <script type="text/template" set:html={entry.body}></script>
-      </section>
+      <section data-markdown set:html={entry.body} />
     </div>
   </div>
 </Layout>
@@ -32,12 +30,11 @@ const image = Astro.url.origin + `/og/slide/${entry.id}.png`;
   import Reveal from "reveal.js";
   import Markdown from "reveal.js/plugin/markdown/markdown.esm.js";
   import RevealHighlight from "reveal.js/plugin/highlight/highlight.esm.js";
-  import RevealMath from "reveal.js/plugin/math/math.esm.js";
 
   const reveal = document.querySelector(".reveal");
   if (reveal) {
     const deck = new Reveal({
-      plugins: [Markdown, RevealHighlight, RevealMath.KaTeX],
+      plugins: [Markdown, RevealHighlight],
     });
     deck.initialize({ controls: false, center: true });
   }

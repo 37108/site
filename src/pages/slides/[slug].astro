@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/HeadLayout.astro";
-import "reveal.js/dist/reveal.css";
-import "reveal.js/dist/theme/black.css";
-import "reveal.js/plugin/highlight/zenburn.css";
+import "reveal.js/reveal.css";
+import "reveal.js/theme/black.css";
+import "reveal.js/plugin/highlight/monokai.css";
 
 export async function getStaticPaths() {
   const entries = await getCollection("slide");
@@ -21,15 +21,17 @@ const image = Astro.url.origin + `/og/slide/${entry.id}.png`;
 <Layout title={entry.data.title} description="" image={image}>
   <div class="reveal">
     <div class="slides">
-      <section data-markdown set:html={entry.body} />
+      <section data-markdown>
+        <textarea data-template set:html={entry.body} />
+      </section>
     </div>
   </div>
 </Layout>
 
 <script>
   import Reveal from "reveal.js";
-  import Markdown from "reveal.js/plugin/markdown/markdown.esm.js";
-  import RevealHighlight from "reveal.js/plugin/highlight/highlight.esm.js";
+  import Markdown from "reveal.js/plugin/markdown";
+  import RevealHighlight from "reveal.js/plugin/highlight";
 
   const reveal = document.querySelector(".reveal");
   if (reveal) {
